@@ -1,4 +1,3 @@
--- Cmdline
 local api = vim.api
 local cmp = require "cmp"
 api.nvim_set_keymap("n", ":", "<cmd>FineCmdline<CR>", {noremap = true})
@@ -69,6 +68,14 @@ cmp.setup.cmdline(
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
 require("lspconfig")["lua_ls"].setup {
+    capabilities = capabilities
+}
+
+require("lspconfig")["bashls"].setup {
+    capabilities = capabilities
+}
+
+require("lspconfig")["gopls"].setup {
     capabilities = capabilities
 }
 
