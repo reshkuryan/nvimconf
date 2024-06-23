@@ -67,17 +67,15 @@ cmp.setup.cmdline(
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-require("lspconfig")["lua_ls"].setup {
-    capabilities = capabilities
-}
+local lspconfig = require("lspconfig")
 
-require("lspconfig")["bashls"].setup {
-    capabilities = capabilities
-}
+local function setup_lsp(server)
+    lspconfig[server].setup {
+        capabilities = capabilities
+    }
+end
 
-require("lspconfig")["gopls"].setup {
-    capabilities = capabilities
-}
-
-
+setup_lsp("lua_ls")
+setup_lsp("bashls")
+setup_lsp("gopls")
 
